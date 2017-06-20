@@ -12,9 +12,6 @@
     "eslint": "4.0.0",
     "standard": "10.0.2"
   },
-  "peerDependencies": {
-    "leitmotiv": "file:../leitmotiv"
-  },
   "dependencies": {
     "markdown-it": "8.3.1"
   }
