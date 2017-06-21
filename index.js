@@ -13,5 +13,5 @@ class MarkdownConverter {
 const converter = new MarkdownConverter(new MarkdownIt())
 
 module.exports = (leitmotiv) => {
-  leitmotiv.converters['md'] = (content) => converter.render(content.toString())
+  leitmotiv.converters['md'] = (node) => converter.render(node.content.toString())
 }
