@@ -13,6 +13,7 @@
     "standard": "10.0.2"
   },
   "dependencies": {
-    "markdown-it": "8.3.1"
+    "markdown-it": "8.3.1",
+    "mdvariables": "0.1.2"
   }
 }
