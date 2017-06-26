@@ -2,19 +2,23 @@ const MarkdownIt = require('markdown-it')
 
 class MarkdownConverter {
   constructor (engine) {
-    this.engine = engine
+    this.converter = engine
   }
 
-  render (content) {
-    return this.engine && this.engine.render(content)
+  init (leitmotiv) {
+    leitmotiv.converters['md'] = (node) => {
+      node.content = this.converter.render(node.content.toString(), node.data)
+      return node
+    }
+  }
+
+  use (plugin, ...args) {
+    // allows plugin to modify the converter
+    this.converter.use(plugin, ...args)
+
+    return this
   }
 }
 
-const converter = new MarkdownConverter(new MarkdownIt())
-
-module.exports = (leitmotiv) => {
-  leitmotiv.converters['md'] = (node) => {
-    node.content = converter.render(node.content.toString())
-    return node
-  }
-}
+const engine = new MarkdownIt()
+module.exports = new MarkdownConverter(engine)
